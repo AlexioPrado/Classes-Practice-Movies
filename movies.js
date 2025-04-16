@@ -28,11 +28,17 @@ class Movie {
     result += `<strong>Rating:</strong> ${this.#rating}<br>`;
     output.innerHTML = result;
   }
-  
+  returnTitle() {
+    return this.#title
+  }
 }
 
 function updateMovieRating(title,newRating) {
-    title.updateRating(newRating)
+  for (let i=0; i<movies.length; i++){
+    if (movies[i].returnTitle() === title) {
+      movies[i].updateRating(newRating)
+    }
+  }
 }
 
 let movies = [];
@@ -46,7 +52,7 @@ movies.push(movie1)
 movie1.updateRating(10.5)
 movie1.displayInfo()
 
-updateMovieRating(movie1,11)
+updateMovieRating('Shrek',11)
 movie1.displayInfo()
 
 // Test your implementation
